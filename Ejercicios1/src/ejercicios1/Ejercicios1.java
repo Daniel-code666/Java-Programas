@@ -18,6 +18,13 @@ public class Ejercicios1 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Ejercicios1 s = new Ejercicios1();
+        
+        s.Suma();
+    }
+    
+    public void Suma()
+    {
         Scanner sc = new Scanner(System.in);
         
         System.out.println("Ingrese primer número: ");
