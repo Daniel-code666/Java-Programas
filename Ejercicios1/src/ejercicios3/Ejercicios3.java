@@ -87,20 +87,14 @@ public class Ejercicios3 {
         int contNeg = 0;
         
         
-        for(int i = 0; i < numeros.length; i++)
-        {    
-            if(Integer.parseInt(numeros[i]) == 0)
-            {
+        for (String numero : numeros) {
+            if (Integer.parseInt(numero) == 0) {
                 cont0++;
             }
-            
-            if(Integer.parseInt(numeros[i]) > 0)
-            {
+            if (Integer.parseInt(numero) > 0) {
                 contPos++;
             }
-            
-            if(Integer.parseInt(numeros[i]) < 0)
-            {
+            if (Integer.parseInt(numero) < 0) {
                 contNeg++;
             }
         }
