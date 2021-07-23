@@ -8,7 +8,6 @@ package ejercicios5;
 import java.util.Scanner;
 import ejercicios2.Ejercicios2;
 import java.io.IOException;
-import java.util.Arrays;
 /**
  *
  * @author Daniel
