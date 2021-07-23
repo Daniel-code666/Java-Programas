@@ -96,7 +96,7 @@ public class Ejercicios2 {
         }
     }
     
-    private String Cuadrante(ArrayList<String> pto)
+    public String Cuadrante(ArrayList<String> pto)
     {
         double x = Double.parseDouble(pto.get(0));
         
@@ -118,7 +118,7 @@ public class Ejercicios2 {
         return "";
     }
     
-    private String NumMay(String[] numeros)
+    public String NumMay(String[] numeros)
     {   
         if(Integer.parseInt(numeros[0]) > Integer.parseInt(numeros[1]) && Integer.parseInt(numeros[0]) > Integer.parseInt(numeros[2]))
         {
@@ -132,7 +132,7 @@ public class Ejercicios2 {
         }
     }
     
-    private String DifMod(String[] numeros1)
+    public String DifMod(String[] numeros1)
     {
         float dif = Float.parseFloat(numeros1[0]) - Float.parseFloat(numeros1[1]);
         
