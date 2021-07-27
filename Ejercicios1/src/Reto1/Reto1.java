@@ -13,11 +13,11 @@ import java.util.Scanner;
  *
  * @author Daniel
  */
-public class Reto1 {
+class Reto1 {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         
-        String datos = sc.nextLine();
+        String datos = scanner.nextLine();
                     
         String[] numeros = datos.split(" ");
         
@@ -29,26 +29,28 @@ public class Reto1 {
         {
             double imc = masa / (altura * altura);
         
-            BigDecimal bd = new BigDecimal(imc).setScale(1, RoundingMode.FLOOR);
+            BigDecimal bd = new BigDecimal(imc).setScale(2, RoundingMode.HALF_DOWN);
 
             imc = bd.doubleValue();
             
-            if(imc < 22 && edad < 45)
+            if(imc <= 22 && edad <= 40)
             {
                 System.out.println(imc + " " + "Bajo");
             }
             
-            if(imc < 22 && edad >= 45)
+            if(imc <= 22 && edad > 40)
             {
                 System.out.println(imc + " " + "Medio");
             }
             
-            if(imc >= 22 && edad < 45)
+            if(imc > 22 && edad <= 40)
             {
-                System.out.println(imc + " " + "Medio");
+                System.out.printf("%.2f", imc);
+                System.out.println(" Medio");
+                //System.out.println(imc + " " + "Medio");
             }
             
-            if(imc >= 22 && edad >= 45)
+            if(imc > 22 && edad > 40)
             {
                 System.out.println(imc + " " + "Alto");
             }
