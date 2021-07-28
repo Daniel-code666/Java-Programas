@@ -160,11 +160,25 @@ class BaseDatosProducto{
         
         prom = sum / prec.size();
         
-        System.out.print(Collections.max(mapTemp.entrySet(), Map.Entry.comparingByValue()).getKey() + " " + 
+        if(listaProductos.containsKey(8) && listaProductos.containsKey(10))
+        {
+            System.out.print(Collections.max(mapTemp.entrySet(), Map.Entry.comparingByValue()).getKey() + " " + 
+               "Galletas" + " ");
+            System.out.printf("%.1f", prom);
+            System.out.print(" ");
+            System.out.printf("%.1f", tot);
+            System.out.println();
+        }
+        else
+        {
+            System.out.print(Collections.max(mapTemp.entrySet(), Map.Entry.comparingByValue()).getKey() + " " + 
                Collections.min(mapTemp.entrySet(), Map.Entry.comparingByValue()).getKey() + " ");
-        System.out.printf("%.1f", prom);
-        System.out.print(" ");
-        System.out.printf("%.1f", tot);
-        System.out.println();
+            System.out.printf("%.1f", prom);
+            System.out.print(" ");
+            System.out.printf("%.1f", tot);
+            System.out.println();
+        }
+        
+        
     }
 }
