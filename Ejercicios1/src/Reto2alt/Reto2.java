@@ -178,7 +178,5 @@ class BaseDatosProducto{
             System.out.printf("%.1f", tot);
             System.out.println();
         }
-        
-        
     }
 }
