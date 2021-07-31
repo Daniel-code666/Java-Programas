@@ -115,9 +115,9 @@ class BaseDatosProducto{
     
     protected void operaciones()
     {
-        ArrayList<Double> prec = new ArrayList();
-        ArrayList<Integer> cant = new ArrayList();
-        ArrayList<String> nombre = new ArrayList();
+        ArrayList<Double> prec = new ArrayList<>();
+        ArrayList<Integer> cant = new ArrayList<>();
+        ArrayList<String> nombre = new ArrayList<>();
         Map<String, Double> mapTemp = new HashMap<>();
         double prom;
         double sum = 0;
