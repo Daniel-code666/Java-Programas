@@ -55,7 +55,7 @@ class BaseDatosProducto{
     
     protected Map<Integer, Object[]> crearTabla()
     {
-        listaProductos.put(1, new Object[]{"Manzana", 8000.0, 550});
+        listaProductos.put(1, new Object[]{"Manzanas", 8000.0, 550});
         listaProductos.put(2, new Object[]{"Limones", 2300.0, 15});
         listaProductos.put(3, new Object[]{"Peras", 2500.0, 38});
         listaProductos.put(4, new Object[]{"Arandanos", 9300.0, 55});
