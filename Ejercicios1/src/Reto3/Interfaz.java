@@ -88,11 +88,7 @@ public class Interfaz {
         
         topPanel.add(addB);
         
-        JTable t1;
-        
-        t1 = crearTabla(bd.crearTabla());
-        
-        lastPanel.add(t1);
+        lastPanel.add(crearTabla(bd.crearTabla()));
         
         mainPanel.add(textFields);
         mainPanel.add(topPanel);
