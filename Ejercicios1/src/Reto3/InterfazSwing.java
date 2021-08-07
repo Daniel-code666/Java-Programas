@@ -6,11 +6,7 @@
 package Reto3;
 
 import java.util.ArrayList;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -295,26 +291,7 @@ public class InterfazSwing extends javax.swing.JFrame {
         //frame.setVisible(true);
         
     }//GEN-LAST:event_jButton4ActionPerformed
-    
-    public void jDialogOptions()
-    {
-        JTextField nombre = new JTextField();
-        JPanel panel = new JPanel();
-        JDialog jd1 = new JDialog();
-        
-        panel.setLayout(null);
-        jd1.setLocation(50, 300);
-        jd1.setTitle("Actualizar");
-        jd1.setSize(400, 300);
-        
-        panel.add(new JLabel("Nombre"));
-        panel.add(nombre);
-        
-        jd1.add(panel);
-        jd1.setVisible(true);
-        
-    }
-    
+  
     public boolean checkIfExist(String nombre)
     {
         int rowCount = jTable1.getRowCount();
