@@ -108,7 +108,7 @@ public class Interfaz {
                     {
                         String[] info = {"","","",""};
                     
-                        info[0] =idTxt.getText();
+                        info[0] = idTxt.getText();
 
                         info[1] = nombreTxt.getText();
 
