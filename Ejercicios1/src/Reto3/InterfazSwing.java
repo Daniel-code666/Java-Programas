@@ -5,6 +5,16 @@
  */
 package Reto3;
 
+import java.awt.FlowLayout;
+import java.util.ArrayList;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Daniel
@@ -16,6 +26,8 @@ public class InterfazSwing extends javax.swing.JFrame {
      */
     public InterfazSwing() {
         initComponents();
+        addRowJTable();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -27,6 +39,8 @@ public class InterfazSwing extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
+        panel1 = new java.awt.Panel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -34,12 +48,35 @@ public class InterfazSwing extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
+        panel1.setLayout(panel1Layout);
+        panel1Layout.setHorizontalGroup(
+            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        panel1Layout.setVerticalGroup(
+            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inventario");
@@ -49,8 +86,6 @@ public class InterfazSwing extends javax.swing.JFrame {
         jLabel2.setText("Precio");
 
         jLabel3.setText("Cantidad");
-
-        jLabel4.setText("ID");
 
         jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -64,11 +99,14 @@ public class InterfazSwing extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(76, 76, 76)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
+                        .addGap(113, 113, 113)
+                        .addComponent(jButton1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
@@ -76,21 +114,13 @@ public class InterfazSwing extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField1)
                             .addComponent(jTextField2)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
-                            .addComponent(jTextField4)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(188, 188, 188)
-                        .addComponent(jButton1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -104,37 +134,67 @@ public class InterfazSwing extends javax.swing.JFrame {
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
         );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "Precio", "Cantidad"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+
+        jButton2.setText("Reporte");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Borrar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Actualizar producto");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4)
+                        .addGap(52, 52, 52)
+                        .addComponent(jButton2))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
+                .addGap(111, 111, 111))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -149,17 +209,169 @@ public class InterfazSwing extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    Producto p;
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
+        if(jTextField1.getText().isEmpty() && jTextField2.getText().isEmpty() && jTextField3.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios");
+        }
+        else
+        {
+            for(int i = 0; i < add().size(); i++)
+            {
+                p = (Producto) add().get(i);
+            }
+            
+            if(checkIfExist(p.nombre))
+            {
+                JOptionPane.showMessageDialog(null, "El producto ya está registrado");
+            }else
+            {
+                Object[] row = {p.nombre, p.precio, p.cantidad};
+                DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+                model.addRow(row);
+                
+                jTextField1.setText("");
+                jTextField2.setText("");
+                jTextField3.setText("");
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public ArrayList add()
+    {
+        ArrayList<Producto> prodListAdd = new ArrayList();
+        
+        Producto pAdd = new Producto(jTextField1.getText(), Double.parseDouble(jTextField2.getText()), Integer.parseInt(jTextField3.getText()));
+        
+        prodListAdd.add(pAdd);
+        
+        return prodListAdd;
+    }
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        JOptionPane.showMessageDialog(null, genReporte());
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    public String genReporte()
+    {
+        int rowCount = jTable1.getRowCount();
+        
+        double tot = 0;
+    
+        for(int i = 0; i < rowCount; i++)
+        {
+            tot += Double.parseDouble(jTable1.getValueAt(i, 1).toString());
+        }
+        
+        return "Total = " + tot;
+    }
+    
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        int selRow = jTable1.getSelectedRow();
+        
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        
+        model.removeRow(selRow);
+        
+        JOptionPane.showMessageDialog(null, "El producto fue eliminado exitosamente");
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        //UpdtFrame frame = new UpdtFrame();
+        UpdtDialog diag = new UpdtDialog(this, true);
+        diag.setVisible(true);
+        //frame.setVisible(true);
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+    
+    public void jDialogOptions()
+    {
+        JTextField nombre = new JTextField();
+        JPanel panel = new JPanel();
+        JDialog jd1 = new JDialog();
+        
+        panel.setLayout(null);
+        jd1.setLocation(50, 300);
+        jd1.setTitle("Actualizar");
+        jd1.setSize(400, 300);
+        
+        panel.add(new JLabel("Nombre"));
+        panel.add(nombre);
+        
+        jd1.add(panel);
+        jd1.setVisible(true);
+        
+    }
+    
+    public boolean checkIfExist(String nombre)
+    {
+        int rowCount = jTable1.getRowCount();
+        int colCount = jTable1.getColumnCount() - 2;
+        
+        for(int i = 0; i < rowCount; i++)
+        {
+            for(int j = 0; j < colCount; j++)
+            {
+                if(nombre.equalsIgnoreCase(jTable1.getValueAt(i,j).toString()))
+                {
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    }
+    
+    public ArrayList crearProdList()
+    {
+        ArrayList<Producto> prodList = new ArrayList();
+        
+        prodList.add(new Producto("Manzanas", 8000.0, 550));
+        prodList.add(new Producto("Limones", 2300.0, 15));
+        prodList.add(new Producto("Peras", 2500.0, 38));
+        prodList.add(new Producto("Arandanos", 9300.0, 55));
+        prodList.add(new Producto("Tomates", 2100.0, 42));
+        prodList.add(new Producto("Fresas", 4100.0, 33));
+        prodList.add(new Producto("Helado", 4500.0, 41));
+        prodList.add(new Producto("Galletas", 500.0, 833));
+        prodList.add(new Producto("Chocolates", 3900.0, 999));
+        prodList.add(new Producto("Jamon", 17000.0, 10));
+        
+        return prodList;
+    }
+    
+    public void addRowJTable()
+    {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        ArrayList<Producto> lista = crearProdList();
+        //lista.addAll(add());
+        
+        Object rowData[] = new Object[3];
+        
+        for(int i = 0; i < lista.size(); i++)
+        {
+            rowData[0] = lista.get(i).nombre;
+            rowData[1] = lista.get(i).precio;
+            rowData[2] = lista.get(i).cantidad;
+            
+            model.addRow(rowData);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -197,17 +409,20 @@ public class InterfazSwing extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    protected javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private java.awt.Panel panel1;
     // End of variables declaration//GEN-END:variables
 }
