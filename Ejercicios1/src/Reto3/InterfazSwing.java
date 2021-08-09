@@ -6,6 +6,10 @@
 package Reto3;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -260,16 +264,20 @@ public class InterfazSwing extends javax.swing.JFrame {
 
     public String genReporte()
     {
+        Map<String, Double> mapTemp = new HashMap<>();
+        
         int rowCount = jTable1.getRowCount();
         
         double tot = 0;
-    
+        
         for(int i = 0; i < rowCount; i++)
         {
-            tot += Double.parseDouble(jTable1.getValueAt(i, 1).toString());
+            mapTemp.put(jTable1.getValueAt(i, 0).toString(), Double.parseDouble(jTable1.getValueAt(i, 1).toString()));
         }
         
-        return "Total = " + tot;
+        List<String> keys = mapTemp.entrySet().stream().sorted(Map.Entry.<String, Double>comparingByValue().reversed()).limit(3).map(Map.Entry::getKey).collect(Collectors.toList());
+        
+        return keys.get(0) + " " + keys.get(1) + " " + keys.get(2);
     }
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
