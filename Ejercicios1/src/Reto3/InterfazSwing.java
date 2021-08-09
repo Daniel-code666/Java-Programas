@@ -37,7 +37,6 @@ public class InterfazSwing extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialog1 = new javax.swing.JDialog();
         panel1 = new java.awt.Panel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -53,17 +52,6 @@ public class InterfazSwing extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
 
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
@@ -245,6 +233,7 @@ public class InterfazSwing extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    //agregar
     public ArrayList add()
     {
         ArrayList<Producto> prodListAdd = new ArrayList();
@@ -262,6 +251,7 @@ public class InterfazSwing extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    //genera reporte
     public String genReporte()
     {
         Map<String, Double> mapTemp = new HashMap<>();
@@ -281,7 +271,14 @@ public class InterfazSwing extends javax.swing.JFrame {
     }
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        
+        delRow();
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    //borrar fila
+    private void delRow()
+    {
         int selRow = jTable1.getSelectedRow();
         
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -289,8 +286,8 @@ public class InterfazSwing extends javax.swing.JFrame {
         model.removeRow(selRow);
         
         JOptionPane.showMessageDialog(null, "El producto fue eliminado exitosamente");
-    }//GEN-LAST:event_jButton3ActionPerformed
-
+    }
+    
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
        
         UpdtDialog diag = new UpdtDialog(this, true);
@@ -298,6 +295,7 @@ public class InterfazSwing extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton4ActionPerformed
   
+    //revisa si ya existe un producto en la tabla
     public boolean checkIfExist(String nombre)
     {
         int rowCount = jTable1.getRowCount();
@@ -317,6 +315,7 @@ public class InterfazSwing extends javax.swing.JFrame {
         return false;
     }
     
+    //productos en el jtable
     public ArrayList crearProdList()
     {
         ArrayList<Producto> prodList = new ArrayList();
@@ -335,11 +334,11 @@ public class InterfazSwing extends javax.swing.JFrame {
         return prodList;
     }
     
+    //convierte el arraylist en tabla
     public void addRowJTable()
     {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         ArrayList<Producto> lista = crearProdList();
-        //lista.addAll(add());
         
         Object rowData[] = new Object[3];
         
@@ -393,7 +392,6 @@ public class InterfazSwing extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
