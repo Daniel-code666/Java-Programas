@@ -6,6 +6,7 @@
 package Reto3;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 //import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -85,7 +86,7 @@ class BaseDatosProducto{
         {
             System.out.println("ERROR");
         }
-        //listaProductos2.entrySet().forEach(entry -> {System.out.println(entry.getKey() + " " + Arrays.toString(entry.getValue()));});
+        //listaProductos.entrySet().forEach(entry -> {System.out.println(entry.getKey() + " " + Arrays.toString(entry.getValue()));});
     }
     
     protected void updt(String[] info)
@@ -113,10 +114,10 @@ class BaseDatosProducto{
         {
             System.out.println("ERROR");
         }
-        //listaProductos2.entrySet().forEach(entry -> {System.out.println(entry.getKey() + " " + Arrays.toString(entry.getValue()));});
+        //listaProductos.entrySet().forEach(entry -> {System.out.println(entry.getKey() + " " + Arrays.toString(entry.getValue()));});
     }
     
-    protected void operaciones()
+    protected String operaciones()
     {
         ArrayList<Double> prec = new ArrayList<>();
 //        ArrayList<Integer> cant = new ArrayList<>();
@@ -153,8 +154,7 @@ class BaseDatosProducto{
         
         List<String> keys = mapTemp.entrySet().stream().sorted(Map.Entry.<String, Double>comparingByValue().reversed()).limit(3).map(Map.Entry::getKey).collect(Collectors.toList());
         
-        System.out.println(keys.get(0) + " " + keys.get(1) + " " + keys.get(2));
-        
+        return keys.get(0) + " " + keys.get(1) + " " + keys.get(2);
     }
 }
 
