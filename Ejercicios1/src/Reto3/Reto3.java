@@ -6,11 +6,11 @@
 package Reto3;
 
 import java.util.ArrayList;
-import java.util.Collections;
+//import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
+//import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -119,12 +119,12 @@ class BaseDatosProducto{
     protected void operaciones()
     {
         ArrayList<Double> prec = new ArrayList<>();
-        ArrayList<Integer> cant = new ArrayList<>();
+//        ArrayList<Integer> cant = new ArrayList<>();
         ArrayList<String> nombre = new ArrayList<>();
         Map<String, Double> mapTemp = new HashMap<>();
-        double prom;
-        double sum = 0;
-        double tot = 0;
+//        double prom;
+//        double sum = 0;
+//        double tot = 0;
         
         listaProductos.values().forEach(i -> {
             for(Object j : i)
@@ -139,10 +139,10 @@ class BaseDatosProducto{
                     prec.add((Double) j);
                 }
                 
-                if(j instanceof Integer)
-                {
-                    cant.add((Integer) j);
-                }
+//                if(j instanceof Integer)
+//                {
+//                    cant.add((Integer) j);
+//                }
             }
             //System.out.println(Arrays.toString(i));
         });
