@@ -5,6 +5,8 @@
  */
 package Reto3;
 
+import Reto3.BaseDatosProducto;
+import Reto3.UpdtDialog_new;
 import java.util.Map;
 import java.util.NavigableMap;
 import java.util.TreeMap;
