@@ -6,6 +6,8 @@
 package Reto3;
 
 import java.util.Map;
+import java.util.NavigableMap;
+import java.util.TreeMap;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -28,25 +30,7 @@ public class InterfazSwing2 extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         
         crearJTable(bd.crearTabla());
-    }
-
-    public void crearJTable(Map<?,?> prodList)
-    {
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         
-        for(Map.Entry<?, ?> datos : prodList.entrySet())
-        {
-            Vector<Object> fila = new Vector<>(4);
-
-            Object[] valores = (Object[]) datos.getValue();
-
-            for (Object i : valores)
-            {
-                fila.addElement(i);
-            }
-
-            model.addRow(fila);
-        }
     }
     
     /**
@@ -81,9 +65,10 @@ public class InterfazSwing2 extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Precio", "Cantidad"
+                "Id", "Nombre", "Precio", "Cantidad"
             }
         ));
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
         jButton2.setText("Borrar");
@@ -114,26 +99,26 @@ public class InterfazSwing2 extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(15, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton2)
                         .addGap(89, 89, 89)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton4)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jLabel1.setText("Nombre");
@@ -183,9 +168,9 @@ public class InterfazSwing2 extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
-                .addGap(23, 23, 23))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -198,9 +183,9 @@ public class InterfazSwing2 extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -214,27 +199,140 @@ public class InterfazSwing2 extends javax.swing.JFrame {
         }
         else
         {
-            cont++;
-            String[] datos = {Integer.toString(bd.listaProductos.keySet().size() + cont), jTextField1.getText(), jTextField2.getText(), jTextField3.getText()};
+            String[] datos = {Integer.toString(obtenerUltimaKey() + (cont + 1)), jTextField1.getText(), jTextField2.getText(), jTextField3.getText()};
             
-            bd.add(datos);
+            if(checkIfExist(datos[1]))
+            {
+                JOptionPane.showMessageDialog(null, "El nombre del producto ya está agregado");
+            }
+            else
+            {
+                bd.add(datos);
             
+                refrescarTabla();
+
+                JOptionPane.showMessageDialog(null, "Producto agregado correctamente");
+                
+                jTextField1.setText("");
+                jTextField2.setText("");
+                jTextField3.setText("");
+                
+            }
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        
+        int selFila = jTable1.getSelectedRow();
+        
+        String[] datos = {jTable1.getValueAt(selFila, 0).toString(), jTable1.getValueAt(selFila, 1).toString(), jTable1.getValueAt(selFila, 2).toString(), jTable1.getValueAt(selFila, 3).toString()};
+        
+        bd.del(datos);
+        
+        refrescarTabla();
+        
+        JOptionPane.showMessageDialog(null, "Producto borrado");
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        
+        UpdtDialog_new diag = new UpdtDialog_new(this, true);
+        diag.setVisible(true);
+        
+        String[] datos = {"", "", "", ""};
+        
+        bd.listaProductos.entrySet().forEach(entry -> {
+            for (Object value : entry.getValue()) 
+            {
+                if(value instanceof String && value.toString().equalsIgnoreCase(datosUpdt[0]))
+                {
+                    datos[0] = Integer.toString(entry.getKey());
+                    datos[1] = datosUpdt[0];
+                    datos[2] = datosUpdt[1];
+                    datos[3] = datosUpdt[2];
+                    
+                    bd.updt(datos);
+                    
+                    break;
+                }
+            }
+        });
+        
+        JOptionPane.showMessageDialog(null, "Producto actualizado");
+            
+        refrescarTabla();
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        
+        JOptionPane.showMessageDialog(null, bd.operaciones());
+        
     }//GEN-LAST:event_jButton4ActionPerformed
+    
+    private int obtenerUltimaKey()
+    {
+        int key;
+        NavigableMap<Integer, Object[]> map = new TreeMap<>();
+        
+        map.putAll(bd.listaProductos);
+        
+        key = map.lastKey();
+        
+        return key;
+    }
+    
+    public void crearJTable(Map<?,?> prodList)
+    {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        
+        for(Map.Entry<?, ?> datos : prodList.entrySet())
+        {
+            Vector<Object> fila = new Vector<>(4);
+            
+            fila.addElement(datos.getKey());
+            
+            Object[] valores = (Object[]) datos.getValue();
 
+            for (Object i : valores)
+            {
+                fila.addElement(i);
+            }
+
+            model.addRow(fila);
+        }
+        
+        jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
+        jTable1.getColumnModel().getColumn(0).setMinWidth(0);
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(0);
+    }
+    
+    private void refrescarTabla()
+    {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+
+        crearJTable(bd.listaProductos);
+    }
+    
+    //revisa si ya existe un producto en la tabla
+    public boolean checkIfExist(String nombre)
+    {
+        int rowCount = jTable1.getRowCount();
+        
+        for(int i = 0; i < rowCount; i++)
+        {
+            if(nombre.equalsIgnoreCase(jTable1.getValueAt(i,1).toString()))
+            {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -288,4 +386,5 @@ public class InterfazSwing2 extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     BaseDatosProducto bd = new BaseDatosProducto();
     int cont = 0;
+    String[] datosUpdt;
 }
