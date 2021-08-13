@@ -6,7 +6,7 @@
 package Reto3;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+//import java.util.Arrays;
 //import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -154,6 +154,7 @@ class BaseDatosProducto{
         
         List<String> keys = mapTemp.entrySet().stream().sorted(Map.Entry.<String, Double>comparingByValue().reversed()).limit(3).map(Map.Entry::getKey).collect(Collectors.toList());
         
+        //System.out.println(keys.get(0) + " " + keys.get(1) + " " + keys.get(2));
         return keys.get(0) + " " + keys.get(1) + " " + keys.get(2);
     }
 }
