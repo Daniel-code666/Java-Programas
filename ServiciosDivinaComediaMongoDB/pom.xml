@@ -11,7 +11,7 @@
 	<groupId>com.sergioarboleda</groupId>
 	<artifactId>divinacomedia</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>divinacomedia</name>
+	<name>divinacomediamongodb</name>
 	<description>Servicios de catálogo la Divina Comedia</description>
 	<properties>
 		<java.version>1.8</java.version>
